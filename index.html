@@ -10,9 +10,7 @@
     :root {
       color-scheme: light;
       --ink: #1d211d;
-      --muted: #686e68;
       --line: rgba(28, 34, 28, .12);
-      --page: #f7f6f2;
       --paper: #fff;
       --green: #e8efe4;
       --yellow: #f3edcf;
@@ -23,14 +21,12 @@
 
     * { box-sizing: border-box; }
 
-    html { background: var(--page); }
+    html { background: var(--paper); }
 
     body {
       margin: 0;
       color: var(--ink);
-      background:
-        radial-gradient(circle at 11% 4%, rgba(221, 231, 214, .5), transparent 28rem),
-        var(--page);
+      background: var(--paper);
       min-height: 100vh;
     }
 
@@ -39,86 +35,54 @@
     .page {
       width: min(1180px, calc(100% - 48px));
       margin: 0 auto;
-      padding: 28px 0 64px;
+      padding: 28px 0 56px;
     }
 
-    .brand {
-      display: inline-flex;
+    .site-header {
+      display: flex;
       align-items: center;
       gap: 10px;
-      color: #4b514b;
-      font-size: 14px;
-      font-weight: 650;
-      letter-spacing: .04em;
+      padding: 0 0 36px;
     }
 
-    .brand img {
+    .site-header img {
       width: 28px;
       height: 28px;
       display: block;
       object-fit: contain;
     }
 
-    .intro {
-      padding: 88px 0 42px;
-      max-width: 760px;
-    }
-
-    .eyebrow {
-      margin: 0 0 14px;
-      color: #777d77;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
     h1 {
       margin: 0;
-      max-width: 12em;
-      font-size: clamp(38px, 6vw, 72px);
-      font-weight: 720;
-      letter-spacing: -.055em;
-      line-height: .98;
-    }
-
-    .lede {
-      margin: 22px 0 0;
-      max-width: 34em;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.75;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.3;
     }
 
     .projects {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      align-items: start;
+      column-count: 3;
+      column-gap: 18px;
     }
 
     .project {
-      min-height: 282px;
       padding: 24px;
       display: flex;
       flex-direction: column;
+      break-inside: avoid;
+      margin: 0 0 18px;
       text-decoration: none;
       background: var(--paper);
       border: 1px solid var(--line);
       border-radius: 22px;
       overflow: hidden;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      transition: transform .2s ease, border-color .2s ease;
     }
-
-    .project:nth-child(2) { min-height: 346px; }
-    .project:nth-child(3) { min-height: 314px; }
-    .project:nth-child(4) { min-height: 258px; }
 
     .project:hover,
     .project:focus-visible {
-      transform: translateY(-4px);
+      transform: translateY(-2px);
       border-color: rgba(28, 34, 28, .22);
-      box-shadow: 0 18px 44px rgba(39, 45, 39, .09);
       outline: none;
     }
 
@@ -128,24 +92,14 @@
     .project--blue { background: var(--blue); }
 
     .project-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
       color: rgba(29, 33, 29, .58);
       font-size: 11px;
       font-weight: 750;
       letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .project-index {
-      font-variant-numeric: tabular-nums;
-      letter-spacing: .06em;
     }
 
     .project h2 {
-      margin: 58px 0 0;
+      margin: 46px 0 4px;
       max-width: 10em;
       font-size: clamp(25px, 2.4vw, 34px);
       font-weight: 700;
@@ -153,36 +107,8 @@
       line-height: 1.16;
     }
 
-    .project p {
-      margin: 18px 0 28px;
-      max-width: 25em;
-      color: rgba(29, 33, 29, .66);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .project-arrow {
-      margin-top: auto;
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      align-self: flex-end;
-      border: 1px solid rgba(29, 33, 29, .22);
-      border-radius: 50%;
-      font-size: 18px;
-      transition: transform .2s ease, background .2s ease;
-    }
-
-    .project:hover .project-arrow,
-    .project:focus-visible .project-arrow {
-      transform: translate(2px, -2px);
-      background: rgba(255, 255, 255, .5);
-    }
-
     @media (max-width: 920px) {
-      .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .intro { padding-top: 70px; }
+      .projects { column-count: 2; }
     }
 
     @media (max-width: 620px) {
@@ -191,73 +117,42 @@
         padding-top: 20px;
       }
 
-      .intro { padding: 58px 0 32px; }
-      .projects { grid-template-columns: 1fr; }
-      .project,
-      .project:nth-child(n) { min-height: 260px; }
-      .project h2 { margin-top: 44px; }
+      .site-header { padding-bottom: 28px; }
+      .projects { column-count: 1; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .project, .project-arrow { transition: none; }
+      .project { transition: none; }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header>
-      <div class="brand">
-        <img src="https://daafffodil.github.io/dangdang-textile-daily/brand-mark.png" alt="">
-        <span>铛铛一下项目</span>
-      </div>
+    <header class="site-header">
+      <img src="https://daafffodil.github.io/dangdang-textile-daily/brand-mark.png" alt="">
+      <h1>旧衣循环项目目录</h1>
     </header>
 
     <main>
-      <section class="intro" aria-labelledby="page-title">
-        <p class="eyebrow">Project directory</p>
-        <h1 id="page-title">旧衣循环项目目录</h1>
-        <p class="lede">把持续更新的行业观察、品牌项目资料和内容灵感，放进同一个入口。</p>
-      </section>
-
       <section class="projects" aria-label="项目列表">
         <a class="project project--green" href="https://daafffodil.github.io/dangdang-textile-daily/2026-07-30/" aria-label="进入旧衣回收行业日报">
-          <div class="project-meta">
-            <span>行业资讯</span>
-            <span class="project-index">01</span>
-          </div>
+          <div class="project-meta">行业日报</div>
           <h2>旧衣回收行业日报</h2>
-          <p>按日期整理政策、市场、品牌与材料创新动态。</p>
-          <span class="project-arrow" aria-hidden="true">↗</span>
         </a>
 
         <a class="project project--yellow" href="https://daafffodil.github.io/dangdang-textile-daily/reports/sports-outdoor-circularity-preview/" aria-label="进入运动户外品牌回收项目">
-          <div class="project-meta">
-            <span>品牌项目</span>
-            <span class="project-index">02</span>
-          </div>
+          <div class="project-meta">品牌项目</div>
           <h2>运动户外品牌回收项目</h2>
-          <p>集中查看运动与户外品牌的回收、维修、转售及材料循环项目。</p>
-          <span class="project-arrow" aria-hidden="true">↗</span>
         </a>
 
         <a class="project project--violet" href="https://daafffodil.github.io/dangdang-inspiration-wall/" aria-label="进入旧衣回收灵感墙">
-          <div class="project-meta">
-            <span>视觉灵感</span>
-            <span class="project-index">03</span>
-          </div>
+          <div class="project-meta">视觉灵感</div>
           <h2>旧衣回收灵感墙</h2>
-          <p>浏览品牌视觉、内容创意与对应灵感来源。</p>
-          <span class="project-arrow" aria-hidden="true">↗</span>
         </a>
 
         <a class="project project--blue" href="https://daafffodil.github.io/xiaohongshu-vertical-trend-monitor/" aria-label="进入小红书旧衣回收垂直趋势">
-          <div class="project-meta">
-            <span>内容趋势</span>
-            <span class="project-index">04</span>
-          </div>
+          <div class="project-meta">内容趋势</div>
           <h2>小红书旧衣回收垂直趋势</h2>
-          <p>按日追踪垂直内容趋势与代表性样本。</p>
-          <span class="project-arrow" aria-hidden="true">↗</span>
         </a>
       </section>
     </main>
