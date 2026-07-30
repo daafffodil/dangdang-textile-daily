@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>运动户外品牌回收项目</title>
+  <meta name="description" content="运动户外品牌旧衣、旧鞋回收、维修、二手与材料循环项目公开档案。">
+  <style>
+    :root {
+      --ink: #171a18;
+      --muted: #686d68;
+      --line: #e2e5e0;
+      --paper: #ffffff;
+      --accent: #23b985;
+      --green: #dff3e7;
+      --yellow: #fff0b8;
+      --violet: #e9e5fa;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: min(calc(100% - 48px), 1180px);
+      margin: 0 auto;
+      padding-bottom: 52px;
+    }
+
+    header {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+    }
+
+    main { padding-top: 34px; }
+
+    .collection-head {
+      margin-bottom: 28px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+    }
+
+    .count {
+      flex: 0 0 auto;
+      padding-bottom: 4px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: start;
+    }
+
+    .column {
+      min-width: 0;
+      display: grid;
+      gap: 16px;
+    }
+
+    details {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 21px;
+      background: #fff;
+    }
+
+    details[data-tone="green"] { background: var(--green); }
+    details[data-tone="yellow"] { background: var(--yellow); }
+    details[data-tone="violet"] { background: var(--violet); }
+
+    summary {
+      min-height: 148px;
+      padding: 20px 21px;
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .label {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .card-title {
+      margin: 0;
+      padding-right: 18px;
+      font-size: 20px;
+      line-height: 1.36;
+      letter-spacing: -.6px;
+    }
+
+    .toggle {
+      margin-top: auto;
+      align-self: flex-end;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .toggle::before { content: "＋"; }
+    details[open] .toggle::before { content: "－"; }
+    details[open] summary { min-height: auto; padding-bottom: 18px; }
+
+    .content {
+      margin: 0 21px;
+      padding: 18px 0 22px;
+      border-top: 1px solid rgba(52, 58, 53, .14);
+      color: #424742;
+      font-size: 13px;
+      line-height: 1.78;
+    }
+
+    .field { margin: 0 0 15px; }
+    .field:last-child { margin-bottom: 0; }
+
+    .field dt {
+      margin: 0 0 3px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .field dd { margin: 0; }
+
+    .source {
+      color: #087278;
+      font-weight: 700;
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+    }
+
+    summary:focus-visible,
+    a:focus-visible {
+      outline: 2px solid #68bea0;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 920px) {
+      .board { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(calc(100% - 24px), 1180px);
+        padding-bottom: 32px;
+      }
+
+      header { height: 66px; }
+      .brand { font-size: 15px; }
+      .brand-mark { width: 34px; height: 34px; }
+      main { padding-top: 24px; }
+
+      .collection-head {
+        margin-bottom: 20px;
+        align-items: start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      h1 {
+        font-size: 34px;
+        letter-spacing: -1.3px;
+      }
+
+      .count { padding: 0; }
+      .board { grid-template-columns: 1fr; }
+      summary { min-height: 124px; padding: 18px; }
+      .card-title { font-size: 19px; }
+      .content { margin: 0 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <img class="brand-mark" src="https://daafffodil.github.io/dangdang-textile-daily/brand-mark.png" alt="">
+        <span>运动户外品牌回收项目</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="collection-head">
+        <h1>品牌项目档案</h1>
+        <span class="count" id="projectCount"></span>
+      </div>
+      <section class="board" id="board" aria-label="品牌项目卡片"></section>
+    </main>
+  </div>
+
+  <script>window.__DANGDANG_BASE_PATH__ = "/dangdang-textile-daily";</script><script>
+    const projects = [
+      {
+        brand: "Nike",
+        project: "Recycling & Donation / 旧鞋新生 / Nike Grind",
+        entry: "门店、网页；中国可通过支付宝“耐克旧鞋新生”小程序和校园活动参与。",
+        region: "全球分市场开展。",
+        current: "中国 Campus Loop 2026 延续。",
+        partners: "蚂蚁集团、顺丰、学校与公益组织、材料处理方。",
+        china: "有本地小程序及指定门店。",
+        source: "https://about.nike.com/zh-Hans/mission/initiatives/eliminating-waste-2",
+        tone: "green"
+      },
+      {
+        brand: "Patagonia",
+        project: "Worn Wear",
+        entry: "网站、邮寄、门店和线下活动。",
+        region: "二手换购主要面向美国，维修服务按地区开放。",
+        current: "服务网站及活动页面在 2026 年持续运行。",
+        partners: "Patagonia 自有维修体系及物流、回收伙伴。",
+        china: "二手换购未开放；维修需按中国门店政策确认。",
+        source: "https://wornwear.patagonia.com/",
+        tone: ""
+      },
+      {
+        brand: "The North Face",
+        project: "Renewed Trade-In",
+        entry: "网站申请邮寄，或在美国直营门店交回。",
+        region: "美国。",
+        current: "奖励加码活动持续至 2026 年 1 月 31 日。",
+        partners: "第三方运营代表；当前官网未公开名称。",
+        china: "未开放。",
+        source: "https://www.thenorthface.com/en-us/approach/the-north-face-renewed-trade-in",
+        tone: "yellow"
+      },
+      {
+        brand: "Arc'teryx",
+        project: "ReBIRD / RESALE",
+        entry: "服务中心、门店和网页；北美提供在线换购。",
+        region: "全球维修，北美二手换购。",
+        current: "日本自 2026 年 2 月起为部分产品提供最长 10 年免费修复。",
+        partners: "各地维修与清洗伙伴。",
+        china: "有维修服务中心；未确认中国二手换购。",
+        source: "https://arcteryx.com/ch/en/explore/rebird",
+        tone: "violet"
+      },
+      {
+        brand: "adidas",
+        project: "Made To Be Remade",
+        entry: "通过指定产品网页发起退回。",
+        region: "部分市场和指定产品。",
+        current: "旧项目的礼品卡退回窗口延续至 2026 年 12 月 31 日。",
+        partners: "T-REX、ReWear、Fashion for Good、WBCSD 等。",
+        china: "未确认消费者通用入口。",
+        source: "https://www.adidas.com/us/terms_conditions_made_to_be_remade",
+        tone: ""
+      },
+      {
+        brand: "PUMA",
+        project: "RE:FIBRE Take Back",
+        entry: "指定门店回收箱，项目网页查询参与点位。",
+        region: "选择性市场。",
+        current: "项目在 2026 年继续运行。",
+        partners: "RE&UP、I:CO、PSV Eindhoven、FC St. Pauli 等。",
+        china: "未确认公开门店清单。",
+        source: "https://about.puma.com/en/circularity/refibre",
+        tone: "green"
+      },
+      {
+        brand: "Decathlon",
+        project: "Buy Back / Second Life / Repair / Rental",
+        entry: "门店、网站和维修工作坊。",
+        region: "覆盖 24 个以上国家，具体服务因市场而异。",
+        current: "2026 年回购目标为 80 万件，其中自行车 50 万辆。",
+        partners: "以自有门店和维修网络为主。",
+        china: "具体品类和门店需向本地门店确认。",
+        source: "https://sustainability.decathlon.com/going-circular-transition-towards-a-circular-economy",
+        tone: "yellow"
+      },
+      {
+        brand: "lululemon",
+        project: "Like New",
+        entry: "美国门店交回，Like New 网站购买二手商品。",
+        region: "美国。",
+        current: "服务在 2026 年持续运行。",
+        partners: "当前项目页面未披露运营商。",
+        china: "未开放。",
+        source: "https://shop.lululemon.com/help/programs-and-discounts/like-new",
+        tone: ""
+      },
+      {
+        brand: "On",
+        project: "Cyclon Resale / Recycling",
+        entry: "账户网页和邮寄；美国、英国、瑞士另有换购平台。",
+        region: "美国、英国、瑞士及部分 Cyclon 销售地区。",
+        current: "2026 年 3 月 17 日停止订阅，6 月转为直接购买与转售。",
+        partners: "Soles4Souls 等。",
+        china: "普通旧 On 产品未确认；Cyclon 入口按账户地区判断。",
+        source: "https://www.on.com/en-gr/faq/cyclon-subscription",
+        tone: "violet"
+      },
+      {
+        brand: "ASICS",
+        project: "NIMBUS MIRAI Return & Recycle",
+        entry: "门店、网页申请和邮寄。",
+        region: "美国、加拿大、英国、荷兰、法国、日本、澳大利亚、新西兰。",
+        current: "回收材料用于 2026 TEAM JAPAN 官方鞋款。",
+        partners: "TerraCycle 等。",
+        china: "未开放。",
+        source: "https://www.asics.com/us/en-us/blog/nimbus-mirai-designed-to-be-returned",
+        tone: "green"
+      },
+      {
+        brand: "New Balance",
+        project: "Reconsidered",
+        entry: "美国门店、网页邮寄和品牌二手网站。",
+        region: "美国。",
+        current: "服务在 2026 年持续运行。",
+        partners: "Archive、Tersus Solutions、Soles4Souls。",
+        china: "未开放。",
+        source: "https://www.newbalance.com/faqs/new-balance-reconsidered/",
+        tone: ""
+      },
+      {
+        brand: "Columbia",
+        project: "ReThreads",
+        entry: "美国品牌门店和 Outlet 回收箱。",
+        region: "美国。",
+        current: "当前企业责任页面仍将项目列为在运行。",
+        partners: "I:CO。",
+        china: "未开放。",
+        source: "https://www.columbia.com/t/responsibility/product/",
+        tone: "yellow"
+      },
+      {
+        brand: "Smartwool",
+        project: "Second Cut",
+        entry: "4 月门店回收，或通过官网获取邮寄回收袋。",
+        region: "以美国和加拿大为主。",
+        current: "2026 年度门店收集已结束，页面提示下一次为 2027 年 4 月。",
+        partners: "Material Return、参与零售商。",
+        china: "未开放。",
+        source: "https://www.smartwool.com/en-us/pages/second-cut",
+        tone: "violet"
+      },
+      {
+        brand: "Timberland",
+        project: "Timberloop",
+        entry: "指定门店；部分市场的旧页面曾提供邮寄说明。",
+        region: "美国和欧洲指定国家。",
+        current: "2026 年 2 月 9 日新增专业维修服务。",
+        partners: "Humana、TRAID。",
+        china: "未确认。",
+        source: "https://www.timberland.com/en-gb/responsibility/timberloop",
+        tone: ""
+      },
+      {
+        brand: "Under Armour × UNLESS",
+        project: "UNLESS Take Back",
+        entry: "通过 UNLESS 官网发起邮寄，并在品牌门店购买限定系列。",
+        region: "美国、加拿大等。",
+        current: "2026 年地球日发布 Earth Essentials 系列，并继续运行回收。",
+        partners: "Natural Fiber Welding、艺术家 Nathaniel Russell。",
+        china: "未开放。",
+        source: "https://unlesscollective.com/pages/takeback",
+        tone: "green"
+      },
+      {
+        brand: "Salomon",
+        project: "Repair / INDEX / Re-Shose",
+        entry: "维修网页和指定产品服务入口。",
+        region: "欧洲等市场。",
+        current: "2026 年未见通用消费者回收活动，维修和可回收设计研发继续推进。",
+        partners: "Green Wolf、CETIA、Carbios、ASF。",
+        china: "未确认通用回收入口。",
+        source: "https://www.salomon.com/en-gb/lp/g/sustainability-innovation",
+        tone: ""
+      },
+      {
+        brand: "Brooks",
+        project: "ReStart",
+        entry: "ReStart 网站购买二手商品；旧鞋通过页面引导至外部捐赠。",
+        region: "美国。",
+        current: "ReStart 在 2026 年持续运行。",
+        partners: "Soles4Souls、The Footwear Collective。",
+        china: "未开放。",
+        source: "https://www.brooksrunning.com/en_us/meet-brooks/running-responsibly/",
+        tone: "yellow"
+      },
+      {
+        brand: "REI Co-op",
+        project: "Re/Supply",
+        entry: "全美门店和 Re/Supply 网站。",
+        region: "美国，会员制。",
+        current: "2026 年披露每年流转超过 100 万件二手用品。",
+        partners: "REI 多品牌供应生态。",
+        china: "不适用。",
+        source: "https://www.rei.com/used/faq",
+        tone: "violet"
+      },
+      {
+        brand: "Fjällräven",
+        project: "Pre-Loved / Repair",
+        entry: "C2C 网站和维修中心。",
+        region: "美国二手平台；维修服务按地区开放。",
+        current: "品牌披露 2025 年售出 8,842 件二手商品，相关页面在 2026 年持续运行。",
+        partners: "Archive。",
+        china: "二手平台未开放。",
+        source: "https://preloved.fjallraven.com/",
+        tone: ""
+      },
+      {
+        brand: "Canada Goose",
+        project: "Generations",
+        entry: "网站估价、邮寄和品牌二手商城。",
+        region: "以美国和加拿大为主。",
+        current: "项目页面在 2026 年持续运行。",
+        partners: "Trove。",
+        china: "未开放。",
+        source: "https://generations.canadagoose.com/pages/trade-in-checkout",
+        tone: "green"
+      },
+      {
+        brand: "Houdini",
+        project: "Houdini Circle",
+        entry: "斯德哥尔摩实体店、网站和品牌门店回收。",
+        region: "瑞典及部分欧洲市场。",
+        current: "2026 年官网继续更新 Houdini Circle 内容。",
+        partners: "主要由品牌自营。",
+        china: "未开放。",
+        source: "https://houdinisportswear.com/en-jp/journal/houdini-circle-rent-reuse-repair-remake-recycle",
+        tone: "yellow"
+      },
+      {
+        brand: "Norrøna",
+        project: "Norrøna RE",
+        entry: "门店、网站登记维修和租赁服务。",
+        region: "以挪威和欧洲为主。",
+        current: "项目在 2026 年持续运行。",
+        partners: "Recouture。",
+        china: "未开放。",
+        source: "https://www.norrona.com/en-GB/house/norrona-re/",
+        tone: ""
+      },
+      {
+        brand: "Rab",
+        project: "Service Centre / Second Stitch / Rental",
+        entry: "网站邮寄维修和地区服务中心。",
+        region: "英国、美国、加拿大、荷兰等。",
+        current: "维修、Second Stitch 和租赁服务在 2026 年持续运行。",
+        partners: "Rab 自有服务中心及未具名慈善渠道。",
+        china: "未确认消费者回收入口。",
+        source: "https://rab.equipment/uk/service-centre",
+        tone: "violet"
+      },
+      {
+        brand: "Mammut",
+        project: "Repair / Close the Loop",
+        entry: "网站上传服务申请、门店与零售商、绳索回收活动。",
+        region: "全球分市场。",
+        current: "品牌披露 2024 年修复 14,928 件产品，维修入口在 2026 年持续运行。",
+        partners: "United Repair Centre、Protect Our Winters Switzerland、ECONYL。",
+        china: "公开报告中有中国维修量记录，具体入口需向门店确认。",
+        source: "https://www.mammut.com/pl/en/responsibility-circularity/",
+        tone: "green"
+      },
+      {
+        brand: "VAUDE",
+        project: "Repair / Second Use / Rent",
+        entry: "品牌维修、iFixit 教程、Repair Café 和租赁。",
+        region: "德国和欧洲。",
+        current: "相关服务在 2026 年持续运行。",
+        partners: "iFixit、Repair Café、FairWertung。",
+        china: "未开放。",
+        source: "https://www.vaude.com/int/en/blog/post/yours-forever-give-our-products-a-long-life.html",
+        tone: ""
+      },
+      {
+        brand: "Jack Wolfskin",
+        project: "Repair Service",
+        entry: "门店收件和品牌维修服务。",
+        region: "德国、奥地利等。",
+        current: "当前维修页面在 2026 年仍运行。",
+        partners: "Jack Wolfskin 自有维修团队。",
+        china: "入口未确认。",
+        source: "https://www.jack-wolfskin.com/repair-service/",
+        tone: "yellow"
+      },
+      {
+        brand: "Vans",
+        project: "Take Back",
+        entry: "选择性门店回收。",
+        region: "部分欧洲市场。",
+        current: "2025—2026 年官网仍提到项目，但未公布完整门店表。",
+        partners: "当前项目页面未披露。",
+        china: "未开放。",
+        source: "https://www.vans.com/en-dk/vans-stories/can-vans-be-recycled",
+        tone: ""
+      },
+      {
+        brand: "Teva",
+        project: "TevaForever",
+        entry: "产品页面指向旧凉鞋回收；历史上使用邮寄方式。",
+        region: "美国。",
+        current: "产品页面仍保留项目描述，2026 年具体参与规则需以品牌当期页面为准。",
+        partners: "TerraCycle。",
+        china: "未开放。",
+        source: "https://www.teva.com/sandals/original-universal-gradiate/1134372.html",
+        tone: "green"
+      },
+      {
+        brand: "UGG",
+        project: "UGGrenew",
+        entry: "官网申请，邮寄或门店交付。",
+        region: "美国、英国、澳大利亚等分市场。",
+        current: "维修与清洁服务在 2026 年持续运行。",
+        partners: "NuShoe、Sneaker Hut。",
+        china: "未开放。",
+        source: "https://www.ugg.com/uk/uggrenew.html",
+        tone: "violet"
+      },
+      {
+        brand: "Stio",
+        project: "Second Turn",
+        entry: "网站邮寄和 Mountain Studio 门店。",
+        region: "美国。",
+        current: "2026 年 4 月在 5Point Film Festival 举办旧品快闪。",
+        partners: "Tersus Solutions。",
+        china: "未开放。",
+        source: "https://www.stio.com/pages/second-turn",
+        tone: ""
+      },
+      {
+        brand: "Peak Performance",
+        project: "WearAgains",
+        entry: "历史入口包括门店二手与维修。",
+        region: "北欧和欧洲。",
+        current: "2024 年报告继续将 WearAgains 列入循环业务；2026 年消费者入口需以品牌当期页面为准。",
+        partners: "当前公开资料未充分披露。",
+        china: "未开放。",
+        source: "https://www.peakperformance.com/",
+        tone: "yellow"
+      },
+      {
+        brand: "李宁",
+        project: "旧物循绿，自然新生",
+        entry: "线上平台、12 家门店和快闪活动。",
+        region: "中国。",
+        current: "截至 2025 年底累计回收超过 2,700 千克；2026 年发布的年报继续披露项目成果。",
+        partners: "专业回收平台；年报未公开名称。",
+        china: "可参与，具体门店和活动时间需查询当期公告。",
+        source: "https://ir.lining.com/sc/csr/csr.php",
+        tone: "green"
+      },
+      {
+        brand: "AIGLE",
+        project: "中国旧衣回收 / 日本 BRING",
+        entry: "中国阶段性活动入口与门店；日本通过参与门店回收。",
+        region: "中国和日本。",
+        current: "中国项目在 2025 年曾开展，2026 年续期需向品牌确认；日本官网仍介绍 BRING。",
+        partners: "中国飞蚂蚁；日本 JEPLAN / BRING。",
+        china: "2025 年存在活动，2026 年需查询品牌当期公告。",
+        source: "https://www.aigle.co.jp/topics/article/101",
+        tone: ""
+      }
+    ];
+
+    const board = document.querySelector("#board");
+    const projectCount = document.querySelector("#projectCount");
+    let columnCount = 0;
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function getColumnCount() {
+      if (window.innerWidth <= 680) return 1;
+      if (window.innerWidth <= 920) return 2;
+      return 3;
+    }
+
+    function cardHtml(item) {
+      const tone = item.tone ? ` data-tone="${item.tone}"` : "";
+      return `
+        <details${tone}>
+          <summary>
+            <span class="label">${escapeHtml(item.brand)}</span>
+            <h2 class="card-title">${escapeHtml(item.project)}</h2>
+            <span class="toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="content">
+            <dl>
+              <div class="field"><dt>参与入口</dt><dd>${escapeHtml(item.entry)}</dd></div>
+              <div class="field"><dt>开展地区</dt><dd>${escapeHtml(item.region)}</dd></div>
+              <div class="field"><dt>2026 年情况</dt><dd>${escapeHtml(item.current)}</dd></div>
+              <div class="field"><dt>公开合作方</dt><dd>${escapeHtml(item.partners)}</dd></div>
+              <div class="field"><dt>中国大陆入口</dt><dd>${escapeHtml(item.china)}</dd></div>
+              <div class="field"><dt>公开页面</dt><dd><a class="source" href="${escapeHtml(item.source)}" target="_blank" rel="noreferrer">查看项目来源 ↗</a></dd></div>
+            </dl>
+          </div>
+        </details>`;
+    }
+
+    function render() {
+      const nextColumnCount = getColumnCount();
+      if (nextColumnCount === columnCount) return;
+      columnCount = nextColumnCount;
+      const columns = Array.from({ length: columnCount }, () => []);
+      projects.forEach((project, index) => {
+        columns[index % columnCount].push(cardHtml(project));
+      });
+      board.innerHTML = columns
+        .map((cards) => `<div class="column">${cards.join("")}</div>`)
+        .join("");
+    }
+
+    projectCount.textContent = `${projects.length} 个公开项目`;
+    render();
+    window.addEventListener("resize", render, { passive: true });
+  </script>
+</body>
+</html>
+
