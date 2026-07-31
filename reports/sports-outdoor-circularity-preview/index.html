@@ -39,25 +39,43 @@
     }
 
     header {
-      height: 76px;
+      height: 72px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       border-bottom: 1px solid var(--line);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 17px;
+      gap: 10px;
+      font-size: 16px;
       font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.02em;
     }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
+      width: 34px;
+      height: 34px;
       object-fit: contain;
     }
+
+    .directory-link {
+      min-height: 36px;
+      padding: 0 13px;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .directory-link:hover { border-color: #aeb5ae; }
 
     main { padding-top: 34px; }
 
@@ -189,8 +207,8 @@
         padding-bottom: 32px;
       }
 
-      header { height: 66px; }
-      .brand { font-size: 15px; }
+      header { height: 72px; }
+      .brand { font-size: 16px; }
       .brand-mark { width: 34px; height: 34px; }
       main { padding-top: 24px; }
 
@@ -221,6 +239,7 @@
         <img class="brand-mark" src="https://daafffodil.github.io/dangdang-textile-daily/brand-mark.png" alt="">
         <span>运动户外品牌回收项目</span>
       </div>
+      <a class="directory-link" href="https://daafffodil.github.io/dangdang-textile-daily/">返回项目目录</a>
     </header>
 
     <main>
