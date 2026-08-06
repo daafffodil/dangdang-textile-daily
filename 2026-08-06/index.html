@@ -318,7 +318,9 @@ dateToggle.addEventListener("click",()=>{
 older.addEventListener("click",()=>{if(currentDateIndex<reportManifest.length-1)void selectDate(currentDateIndex+1)});
 newer.addEventListener("click",()=>{if(currentDateIndex>0)void selectDate(currentDateIndex-1)});
 document.addEventListener("click",event=>{
-  if(!dateMenu.hidden&&!event.target.closest(".date-nav"))closeCalendar();
+  const clickPath=event.composedPath();
+  const dateNav=document.querySelector(".date-nav");
+  if(!dateMenu.hidden&&!clickPath.includes(dateNav))closeCalendar();
 });
 document.addEventListener("keydown",event=>{
   if(event.key==="Escape"&&!dateMenu.hidden){
